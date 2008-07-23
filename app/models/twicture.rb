@@ -24,19 +24,27 @@ class Twicture < ActiveRecord::Base
   
   def get_twitter_data
     url = "http://twitter.com/statuses/show/#{status}.json"
-    # grab tweet
     begin
+      #grab tweet and catch 403 forbidden errors
       tweet_json = open(url).read
     rescue
       return false
     else
+      if tweet_json =~ /Twitter is down for maintenance/
+        self.errors.add("Twitter", "is down")
+        return false
+      end
       tweet = JSON.parse(tweet_json)
       # tweet = {"user" => {"screen_name" => 'shayarnett'}}
-      write_attribute(:text, tweet["text"])
-      write_attribute(:status, tweet["id"])
-      write_attribute(:image_path, 'twictures/' + "#{status}.gif")
-      write_attribute(:screen_name, tweet["user"]["screen_name"])  
-      return true
+      if tweet["user"] && tweet["text"]
+        write_attribute(:text, tweet["text"])
+        write_attribute(:status, tweet["id"])
+        write_attribute(:image_path, 'twictures/' + "#{status}.gif")
+        write_attribute(:screen_name, tweet["user"]["screen_name"])  
+        return true
+      else
+        return false
+      end
     end
   end
 

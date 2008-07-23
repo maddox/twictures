@@ -22,6 +22,6 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
   r.match('/new',:method => :get).to(:controller => 'twictures', :action => 'new').name(:twictures)
-  r.match('/new',:method => :post).to(:controller => 'twictures', :action => 'create')
+  r.match('/create').to(:controller => 'twictures', :action => 'create')
   r.match('/:id').to(:controller => 'twictures', :action => 'show').name(:twicture)
 end
