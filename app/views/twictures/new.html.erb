@@ -1,4 +1,2 @@
-<% form_for :twicture, :action => url(:twicture,@twicture) do %>
-  <%= text_control :twitter_url, :label => "Tweet URL" %>
-  <%= submit_button 'Twicturlate' %>
-<% end %>
+<%= error_messages_for @twicture %>
+<%= form_html %>

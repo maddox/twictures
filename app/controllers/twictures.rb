@@ -17,7 +17,7 @@ class Twictures < Application
     if @twicture.save
       redirect url(:twicture, @twicture)
     else
-      flash[:error] = "Something went wrong."
+      flash[:error] = "Something bad happened." if flash[:error] == ''
       render :new
     end
   end

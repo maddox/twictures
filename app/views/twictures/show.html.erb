@@ -1,11 +1,8 @@
-
 <p><img src="/images/<%= @twicture.image_path %>" /></p>
 <p><%= link_to 'Original Tweet', @twicture.twitter_url %></p>
-
 <p>Embed this image.</p>
 <%= embed_html(@twicture) %>
 <p></p>
-
 <p>Site doesn't support html? Here is a direct link.</p>
-<p><%= link_to "http://twictur.es/images/twictures/#{@twicture.id}.gif", "http://twictur.es/images/twictures/#{@twicture.id}.gif" %></p>
+<p><%= link_to "http://twictur.es/images/twictures/#{@twicture.id}.gif", "http://twictur.es/images/twictures/#{@twicture.id}.gif" -%></p>
 

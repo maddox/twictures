@@ -6,6 +6,8 @@ class Twicture < ActiveRecord::Base
   after_create :twicturlate
   
   validates_presence_of :twitter_url
+  validates_format_of :twitter_url, :with => /^http:\/\/(?:www\.)?twitter.com\/\S+\/statuses\/(\d+)/,
+                                    :on => :create, :message => "must be a twitter url"
   
   def to_param
     status
@@ -16,6 +18,7 @@ class Twicture < ActiveRecord::Base
       write_attribute(:status, $1)
       return true
     end
+    self.errors.add("Url", "must be a twitter url")
     return false
   end
   
