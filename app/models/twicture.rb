@@ -43,7 +43,7 @@ class Twicture < ActiveRecord::Base
     imagelist.read("caption:#{text}") do
       self.size = "400x"
       self.pointsize = 24
-      self.font = "Lucida Grande"
+      self.font = "Helvetica"
       self.antialias = true
     end
     imagelist[1].border!(10,10,'#ffffff')
