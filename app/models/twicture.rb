@@ -43,7 +43,7 @@ class Twicture < ActiveRecord::Base
     imagelist.read("caption:#{text}") do
       self.size = "400x"
       self.pointsize = 24
-      self.font = "Helvetica"
+      self.font = 'DejaVu Sans'
       self.antialias = true
     end
     imagelist[1].border!(10,10,'#ffffff')
@@ -52,7 +52,7 @@ class Twicture < ActiveRecord::Base
     image = imagelist.append(true)
 
     out = Draw.new
-    out.font = 'Lucida Grande'
+    out.font = 'DejaVu Sans'
     out.pointsize = 18
     out.font_weight = 600
     out.fill = '#000000'
