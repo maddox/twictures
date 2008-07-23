@@ -1,0 +1,18 @@
+---
+# This is a twictures database file for the ActiveRecord ORM
+:development: &defaults
+  :adapter: mysql
+  :database: twictures_development
+  :username: root
+  :password: 
+  :host: localhost
+  :socket: /tmp/mysql.sock
+  :encoding: utf8
+
+:test:
+  <<: *defaults
+  :database: twictures_test
+
+:production:
+  <<: *defaults
+  :database: twictures_production

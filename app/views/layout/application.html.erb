@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+  <head>
+    <title>Twictur.es</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <h1><%= link_to 'Twictur.es', '/' %></h1>
+      </div>
+      <div id="content">
+        <% ['notice', 'error', 'success'].each do |foo| %>
+          <%= tag :div, flash[foo.to_sym], :class => foo if flash[foo.to_sym] %>
+        <% end %>
+        <%= catch_content :for_layout %>
+      </div>
+      <div id="secondary_content">
+        <p>What is Twictur.es? </p>
+      </div>
+      <div id="footer">
+        <p>&copy; 2008 <%= link_to 'Shay Arnett', 'http://shayarnett.com' %> | powered by <%= link_to  'merb', 'http://merbivore.com' %> | fed by <%= link_to 'twitter', 'http://twitter.com' %></p>
+      </div>
+    </div>
+  </body>
+</html>
