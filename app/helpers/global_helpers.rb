@@ -18,7 +18,7 @@ module Merb
 
     def form_html
       <<-html
-<form action="/new" method="post">
+<form action="/create" method="post">
 <label for="twicture_twitter_url">Tweet URL</label>
 <input type="text" class="text" name="twicture[twitter_url]" value="" id="twicture_twitter_url"/>
 <button type="submit">Twicturlate</button>
