@@ -60,7 +60,7 @@ Gem.path.unshift(Merb.root / "gems")
 require 'merb_helpers'
 require 'RMagick'
 require 'open-uri'
-require 'Json'
+require 'json'
 require 'merb_has_flash'
 Merb::BootLoader.after_app_loads do
   # Add dependencies here that must load after the application loads:
