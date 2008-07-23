@@ -59,7 +59,7 @@ Gem.path.unshift(Merb.root / "gems")
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 require 'merb_helpers'
 require 'RMagick'
-require 'Open-URI'
+require 'open-uri'
 require 'Json'
 require 'merb_has_flash'
 Merb::BootLoader.after_app_loads do
