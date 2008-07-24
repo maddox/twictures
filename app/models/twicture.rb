@@ -64,16 +64,16 @@ class Twicture < ActiveRecord::Base
 
     out = Draw.new
     # out.font = 'DejaVu Sans'
-    out.pointsize = 18
+    out.pointsize = 20
     out.font_weight = 600
-    out.fill = '#000000'
-    out.gravity = SouthEastGravity
+    out.fill = '#FFFF'
+    out.gravity = SouthWestGravity
     out.text_antialias = true
     out.annotate(image, 0, 0, 10, 10, "#{screen_name} via twitter")
     
     out.pointsize = 14
     out.fill = '#ffffff'
-    out.gravity = SouthWestGravity
+    out.gravity = SouthEastGravity
     out.annotate(image, 0, 0, 10, 10, 'http://twictur.es')
     
     image.write(Merb.root + '/public/images/' + image_path)

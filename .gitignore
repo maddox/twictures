@@ -1,4 +1,4 @@
 .DS_Store
 log/*.log
 log/*.pid
-public/images/twictures/*.gif
+public/images/twictures/
