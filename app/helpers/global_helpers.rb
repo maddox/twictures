@@ -9,7 +9,7 @@ module Merb
     def embed_html(twicture)
       snippet = <<-SNIP
 <div>
-<p><img src="http://twictur.es/images/#{twicture.image_path}" /></p>
+<p><img src="http://twictur.es/#{twicture.image_path}" /></p>
 <p>image provided by #{link_to "twictur.es", 'http://twictur.es'} | original tweet #{link_to "here", twicture.twitter_url}</p>
 </div>
       SNIP

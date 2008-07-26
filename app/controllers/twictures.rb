@@ -1,9 +1,18 @@
 class Twictures < Application
 
   def show
-    @twicture = Twicture.find_by_status(params[:id])
+    @twicture = Twicture.find_or_create_by_status(params[:id])
     raise NotFound unless @twicture
-    display @twicture
+    if @twicture
+      if params[:send_file]
+        send_file(Merb.root + '/public/' + @twicture.image_path, :content_type => 'image/gif', :disposition => 'inline') 
+      else
+        display @twicture
+      end
+    else
+      flash[:error] = "Something bad happened." if flash[:error] == ''
+      render :new
+    end
   end
 
   def new
