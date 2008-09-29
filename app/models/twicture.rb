@@ -9,9 +9,9 @@ class Twicture < ActiveRecord::Base
   end
   
   def get_twitter_data
-    #get twitter status id from url or status
-    if !status && twitter_url.match(/^http:\/\/(?:www\.)?twitter.com\/\S+\/statuses\/(\d+)/)
-      self.status =  $1
+    #get twitter status id from url or status https://twitter.com/l4rk/statuses/939397539
+    if !status && twitter_url.match(/^http(s)?:\/\/(www\.)?twitter.com\/\S+\/statuses\/(\d+)/)
+      self.status =  $3
     else
       self.status ||= twitter_url
     end

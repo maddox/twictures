@@ -24,10 +24,10 @@ class Twictures < Application
 
   def create
     @twicture = Twicture.find_or_create_by_twitter_url(params[:twicture])
-    if @twicture.save
+    if !@twicture.new_record? || @twicture.save
       redirect url(:twicture, @twicture)
     else
-      flash[:error] = "Something bad happened." if flash[:error] == ''
+      flash[:error] = "Something bad happened."
       render :new
     end
   end

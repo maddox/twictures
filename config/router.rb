@@ -22,7 +22,7 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
   r.match('/new',:method => :get).to(:controller => 'twictures', :action => 'new').name(:twictures)
-  r.match('/create').to(:controller => 'twictures', :action => 'create')
+  r.match('/create', :method => :post).to(:controller => 'twictures', :action => 'create')
   r.match(%r'/(\d+)(\.gif)?').to(:controller => 'twictures', :action => 'show', :id => '[1]', :send_file => '[2]')
   r.match('/:id').to(:controller => 'twictures', :action => 'show').name(:twicture)
 end
