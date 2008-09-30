@@ -33,11 +33,11 @@ class Twictures < Application
   end
   
   def redirect_to_original
-    @twicture = Twicture.find_by_status(params[:id])
+    @twicture = Twicture.find_or_create_by_status(params[:id])
     if @twicture
       redirect @twicture.twitter_url
     else
-      render :show
+      redirect '/'
     end
   end
 
