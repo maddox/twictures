@@ -31,5 +31,14 @@ class Twictures < Application
       render :new
     end
   end
+  
+  def redirect_to_original
+    @twicture = Twicture.find_by_status(params[:id])
+    if @twicture
+      redirect @twicture.twitter_url
+    else
+      render :show
+    end
+  end
 
 end
