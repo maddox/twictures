@@ -69,7 +69,8 @@ class Twicture < ActiveRecord::Base
     out.pointsize = 14
     out.fill = '#ffffff'
     out.gravity = SouthEastGravity
-    out.annotate(image, 0, 0, 10, 10, 'donate @ http://twictur.es')
+    twictures_text = (rand(5) == 0) ? 'donate @ http://twictur.es' : 'http://twictur.es'
+    out.annotate(image, 0, 0, 10, 10, twictures_text)
 
     image.write(Merb.root + '/public/' + image_path)
   end
