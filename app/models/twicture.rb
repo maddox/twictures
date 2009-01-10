@@ -64,12 +64,12 @@ class Twicture < ActiveRecord::Base
     out.fill = '#FFFF'
     out.gravity = SouthWestGravity
     out.text_antialias = true
-    out.annotate(image, 0, 0, 10, 10, "#{screen_name} via twitter")
+    out.annotate(image, 0, 0, 10, 10, "#{screen_name}")
     
     out.pointsize = 14
     out.fill = '#ffffff'
     out.gravity = SouthEastGravity
-    out.annotate(image, 0, 0, 10, 10, 'http://twictur.es')
+    out.annotate(image, 0, 0, 10, 10, 'donate @ http://twictur.es')
 
     image.write(Merb.root + '/public/' + image_path)
   end
