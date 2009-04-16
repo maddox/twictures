@@ -1,3 +1,6 @@
+Capfile
+config/deploy.rb
+public/i/
 .DS_Store
 log/*.log
 log/*.pid

@@ -5,7 +5,7 @@ require 'Json'
 include Magick
 
 
-status = 865566569
+status = 1114947721
 url = "http://twitter.com/statuses/show/#{status}.json"
 # grab tweet
 tweet_json = open(url).read
