@@ -28,10 +28,6 @@ module Twicture
     before_validation_on_create :store_parsed_data
     before_create :create_temporary_image
 
-    def self.create_from_twitter(status_id)
-      new(:status_id => status_id)
-    end
-
     def twitter_data
       @twitter_data ||= JSON.parse(open(twitter_json_url).read)
     end
