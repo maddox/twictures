@@ -1,6 +1,8 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 class TwictureAppTest < Test::Unit::TestCase
+  url, data = register_fake_url(12345678, 'fred')
+
   setup do
     @app = Twicture::App
   end
@@ -14,12 +16,12 @@ class TwictureAppTest < Test::Unit::TestCase
 
   describe "show action" do
     before do
-      get "/i/12345678"
+      get "/i/#{data[:id]}"
     end
 
     it "renders image tag" do
       assert response.ok?
-      assert_match /<img src='\/i\/12345678\.gif'/, response.body
+      assert_match /<img src='\/i\/#{data[:id]}\.gif'/, response.body
     end
   end
 end

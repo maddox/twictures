@@ -35,4 +35,11 @@ end
 
 class Test::Unit::TestCase
   include Sinatra::Test, RR::Adapters::TestUnit
+
+  def self.register_fake_url(id, name)
+    url  = "http://twitter.com/statuses/show/#{id}.json"
+    data = {:user => {:name => name}, :text => 'foo', :id => id}
+    FakeWeb.register_uri(:get, url, :string => data.to_json)
+    [url, data]
+  end
 end

@@ -1,9 +1,7 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 class TwictureTest < Test::Unit::TestCase
-  url  = "http://twitter.com/statuses/show/1.json"
-  data = {:user => {:name => 'bob'}, :text => 'foo', :id => 1}
-  FakeWeb.register_uri(:get, url, :string => data.to_json)
+  url, data = register_fake_url(1, 'bob')
 
   describe "new object" do
     before :all do
@@ -33,6 +31,10 @@ class TwictureTest < Test::Unit::TestCase
 
       it "sets #text" do
         @status.text.should == data[:text]
+      end
+
+      it "sets #content_type" do
+        @status.content_type.should == 'image/gif'
       end
 
       it "sets #filename" do

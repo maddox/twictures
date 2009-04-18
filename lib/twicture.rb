@@ -17,7 +17,7 @@ ActiveRecord::Base.establish_connection \
 
 AttachmentFu.setup ActiveRecord::Base
 AttachmentFu.reset
-AttachmentFu.root_path = File.join(File.dirname(__FILE__), 'public')
+AttachmentFu.root_path = File.join(File.dirname(__FILE__), '..', 'public')
 
 module Twicture
   class Status < ActiveRecord::Base
@@ -63,9 +63,10 @@ module Twicture
     end
 
     def store_parsed_data
-      self.filename    = "#{status}.gif"
-      self.screen_name = twitter_data['user']['name']
-      self.text        = twitter_data['text']
+      self.filename     = "#{status}.gif"
+      self.screen_name  = twitter_data['user']['name']
+      self.text         = twitter_data['text']
+      self.content_type = 'image/gif'
     end
   end
 end

@@ -9,7 +9,8 @@ class Twicture::App < Sinatra::Base
     "hello"
   end
 
-  get '/i/:twitter_status_id' do
-    "<img src='/i/#{params[:twitter_status_id]}.gif' />"
+  get '/i/:status' do
+    @tw = Twicture::Status.find_or_create_by_status(params[:status])
+    "<img src='/i/#{@tw.status}.gif' />"
   end
 end
