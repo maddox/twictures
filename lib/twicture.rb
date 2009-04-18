@@ -47,8 +47,32 @@ module Twicture
   private
     def generate_image
       imagelist = Magick::ImageList.new
+      imagelist.new_image(1, 10) { self.background_color = '#0080FF' }
+      imagelist.read("caption:#{text}") do
+        self.size = "400x"
+        self.pointsize = 24
+        # self.font = 'DejaVu Sans'
+        self.antialias = true
+      end
+      imagelist[1].border!(10,10,'#ffffff')
+      imagelist[1].border!(10,0,'#0080FF')
       imagelist.new_image(1, 40) { self.background_color = '#0080FF' }
       image = imagelist.append(true)
+
+      out = Magick::Draw.new
+      out.font = 'DejaVu Sans'
+      out.pointsize = 20
+      out.font_weight = 600
+      out.fill = '#FFFF'
+      out.gravity = Magick::SouthWestGravity
+      out.text_antialias = true
+      out.annotate(image, 0, 0, 10, 10, "#{screen_name}")
+
+      out.pointsize = 14
+      out.fill = '#ffffff'
+      out.gravity = Magick::SouthEastGravity
+      twictures_text = (rand(5) == 0) ? 'donate @ http://twictur.es' : 'http://twictur.es'
+      out.annotate(image, 0, 0, 10, 10, twictures_text)
       image.format = 'GIF'
       image
     end

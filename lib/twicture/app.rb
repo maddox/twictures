@@ -5,6 +5,9 @@ if !Object.const_defined?(:Twicture)
 end
 
 class Twicture::App < Sinatra::Base
+  set :public, File.join(File.dirname(__FILE__), '..', '..', 'public')
+  set :static, true
+
   get '/' do
     "hello"
   end
