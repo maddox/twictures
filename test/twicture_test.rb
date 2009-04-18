@@ -34,6 +34,18 @@ class TwictureTest < Test::Unit::TestCase
       it "sets #text" do
         @status.text.should == data[:text]
       end
+
+      it "sets #filename" do
+        @status.filename.should == "1.gif"
+      end
+
+      it "saves file" do
+        expected_file = File.join(AttachmentFu.root_path, 'i', '1.gif')
+        assert !File.exist?(expected_file)
+        @status.save!
+        File.expand_path(@status.full_path).should == File.expand_path(expected_file)
+        assert  File.exist?(expected_file)
+      end
     end
   end
 end

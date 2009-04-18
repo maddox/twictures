@@ -19,6 +19,11 @@ require 'logger'
 require 'ruby-debug'
 Debugger.start
 
+files = File.join(File.dirname(__FILE__), 'public')
+FileUtils.rm_rf   files
+FileUtils.mkdir_p files
+AttachmentFu.root_path = files
+
 FileUtils.mkdir_p File.join(File.dirname(__FILE__), '..', 'log')
 
 begin
