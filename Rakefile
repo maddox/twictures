@@ -8,8 +8,8 @@ end
 desc "Default task is to run specs"
 task :default => :test
 
-namespace :my_app do
+namespace :twicture do
   task :init do
-    require File.join(File.join(File.dirname(__FILE__), 'lib'), 'my_app')
+    require File.join(File.join(File.dirname(__FILE__), 'lib'), 'twicture')
   end
 end
