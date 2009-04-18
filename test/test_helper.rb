@@ -6,12 +6,15 @@ require 'rubygems'
 require 'sinatra/test'
 gem 'jeremymcanally-matchy'
 gem 'jeremymcanally-context'
-# gem 'rr'
 
-require File.join(File.dirname(__FILE__), '..', 'lib', 'my_app')
+ENV['ENV'] = 'test'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'twicture')
+require 'twicture/app'
+require 'twicture/schema'
 require 'context'
 require 'matchy'
-# require 'rr'
+require 'rr'
+require 'fakeweb'
 require 'logger'
 require 'ruby-debug'
 Debugger.start
@@ -26,9 +29,5 @@ rescue LoadError
 end
 
 class Test::Unit::TestCase
-  include Sinatra::Test
-  # include RR::Adapters::TestUnit
-  def test_truth
-    assert false
-  end
+  include Sinatra::Test, RR::Adapters::TestUnit
 end
