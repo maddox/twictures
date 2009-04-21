@@ -13,7 +13,7 @@ class TwictureTest < Test::Unit::TestCase
     end
 
     it "fetches twitter data" do
-      @status.twitter_data.should == {'user' => {'name' => 'bob'}, 'text' => 'foo', 'id' => 1}
+      @status.twitter_data.should == {'user' => {'screen_name' => 'bob'}, 'text' => 'foo', 'id' => 1}
     end
 
     describe "being validated" do
@@ -26,7 +26,7 @@ class TwictureTest < Test::Unit::TestCase
       end
 
       it "sets #screen_name" do
-        @status.screen_name.should == data[:user][:name]
+        @status.screen_name.should == data[:user][:screen_name]
       end
 
       it "sets #text" do

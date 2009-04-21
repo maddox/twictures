@@ -16,4 +16,9 @@ class Twicture::App < Sinatra::Base
     @tw = Twicture::Status.find_or_create_by_status(params[:status])
     "<img src='/i/#{@tw.status}.gif' />"
   end
+
+  get '/r/:status' do
+    @tw = Twicture::Status.find_or_create_by_status(params[:status])
+    redirect @tw.twitter_url
+  end
 end

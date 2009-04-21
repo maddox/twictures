@@ -38,7 +38,7 @@ class Test::Unit::TestCase
 
   def self.register_fake_url(id, name)
     url  = "http://twitter.com/statuses/show/#{id}.json"
-    data = {:user => {:name => name}, :text => 'foo', :id => id}
+    data = {:user => {:screen_name => name}, :text => 'foo', :id => id}
     FakeWeb.register_uri(:get, url, :string => data.to_json)
     [url, data]
   end

@@ -84,7 +84,7 @@ module Twicture
 
     def store_parsed_data
       self.filename     = "#{status}.gif"
-      self.screen_name  = twitter_data['user']['name']
+      self.screen_name  = twitter_data['user']['screen_name']
       self.text         = twitter_data['text']
       self.content_type = 'image/gif'
     end
